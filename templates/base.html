@@ -16,19 +16,19 @@
             <div class="logo">
                 <a href="{% url 'home' %}"><img src="{% static 'home/images/logo.png' %}" alt=""></a>
             </div>
-            <ul>
-                <li><a href='{% url 'home' %}'>Home</a></li>
-                <li><a href="">Catalog</a></li>
-                <li><a href="{% url 'about' %}">About us</a></li>
-                <li><a href="">Personal account</a></li>
-            </ul>
+            <div class="text-header">
+                <ul>
+                    <li><a href='{% url 'home' %}' class="header-text">Home</a></li>
+                    <li><a href="{% url 'catalog' %}" class="header-text">Catalog</a></li>
+                    <li><a href="{% url 'about' %}" class="header-text">About us</a></li>
+                    <li><a href="" class="header-text">Personal account</a></li>
+                </ul>
+            </div>
         </div>
     {% endblock header %}
 
-    <!-- content section -->
-
     {% block content %}
-
+        <!-- content section -->
     {% endblock content %}
 
     {% block footer %}
@@ -39,9 +39,3 @@
         </div>
     {% endblock footer %}
 </div>
-<script src="{% static 'home/js/wow.min.js' %}"></script>
-<script>
-    new WOW().init();
-</script>
-</body>
-</html>
