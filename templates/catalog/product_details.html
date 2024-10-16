@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="main">
+        <h2 class="welcome-title">
+            Сторінка товару
+        </h2>
+        <div class="text-box">
+            <img src="{{ MEDIA_URL }}{{ product.product_photo }}/" class="product-image">
+            <p class="product-name">{{ product.product_name }}</p>
+            <hr>
+            <p>Виробник - {{ product.manufacturer_id }}</p>
+            <hr>
+            <p>Тип товару - {{ product.type_id }}</p>
+            <hr>
+            <p>{{ product.about }}</p>
+            <hr>
+            <p>Усього {{ product.price }} ₴!</p>
+        </div>
+        <div class="text-button-container">
+            <a href="" class="button cart-button">Додати в кошик</a>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="main">
+        <h1 class="welcome-title">Товари в наявності</h1>
+        <div class="catalog">
+            {% if product_list %}
+                {% for product in product_list %}
+                    <div class=product-box>
+                        <a class="catalog-text" href="{% url "product_details" product.slug %}"><img
+                                src="{{ MEDIA_URL }}{{ product.product_photo }}/"
+                                class="catalog-image">{{ product.product_name }}</a>
+                        <a class="price">{{ product.price }} ₴</a>
+                        <div class="button-container">
+                            <a href="" class="button add-to-cart-button">Додати в кошик</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>Всі товари скінчились</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock content %}
