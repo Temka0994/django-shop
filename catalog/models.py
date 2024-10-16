@@ -31,7 +31,7 @@ class Product(models.Model):
     product_photo = models.CharField(max_length=250, verbose_name='Посилання на фото')
     manufacturer_id = models.ForeignKey(Manufacturer, on_delete=models.CASCADE, verbose_name='Виробник')
     type_id = models.ForeignKey(ProductType, on_delete=models.CASCADE, verbose_name='Тип товару')
-    price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Ціна')
+    price = models.IntegerField(verbose_name='Ціна')
     about = models.TextField(verbose_name='Опис')
     slug = models.CharField(max_length=30)
 
