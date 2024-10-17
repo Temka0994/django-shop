@@ -36,10 +36,12 @@
             <div class="pagination-wrapper">
                 <span class="pagination-container">
                     {% if page_obj.has_previous %}
-                        <a class="page-links" href="{{ request.path }}?page={{ page_obj.previous_page_number }}">Попередня сторінка</a>
+                        <a class="page-links"
+                           href="?page={{ page_obj.previous_page_number }}&type={{ request.GET.type }}&manufacturer={{ request.GET.manufacturer }}&order_by={{ request.GET.order_by }}">Попередня сторінка</a>
                     {% endif %}
                     {% if page_obj.has_next %}
-                        <a class="page-links" href="{{ request.path }}?page={{ page_obj.next_page_number }}">Наступна сторінка</a>
+                        <a class="page-links"
+                           href="?page={{ page_obj.next_page_number }}&type={{ request.GET.type }}&manufacturer={{ request.GET.manufacturer }}&order_by={{ request.GET.order_by }}">Наступна сторінка</a>
                     {% endif %}
                 </span>
             </div>

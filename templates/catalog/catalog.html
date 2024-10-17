@@ -20,5 +20,42 @@
                 <p>Всі товари скінчились</p>
             {% endif %}
         </div>
+        <form action="{% url 'catalog' %}" method="get">
+            <div>
+                <select name="type_id">
+                    <option value="">Категорія</option>
+                    {% for type in product_types %}
+                        <option value="{{ type.type_id }}"
+                                {% if selected_type == type.type_id %}selected{% endif %}>{{ type.type_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <select name="manufacturer_id">
+                    <option value="">Виробник</option>
+                    {% for manufacturer in manufacturers %}
+                        <option value="{{ manufacturer.manufacturer_id }}"
+                                {% if selected_manufacturer == manufacturer.manufacturer_id %}selected{% endif %}>{{ manufacturer.manufacturer_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <p>Сортування:</p>
+            <div>
+                <input class="check-input" type="radio" name="order_by" id="radioDefault" value="default"
+                       {% if selected_order_by == 'default' %}checked{% endif %}>
+                <label class="check-label" for="radioDefault">За замовчуванням</label>
+            </div>
+            <div>
+                <input class="check-input" type="radio" name="order_by" id="radioDecreasePrice" value="-price"
+                       {% if selected_order_by == '-price' %}checked{% endif %}>
+                <label class="check-label" for="radioDecreasePrice">За спаданням ціни</label>
+            </div>
+            <div>
+                <input class="check-input" type="radio" name="order_by" id="radioGrowPrice" value="price"
+                       {% if selected_order_by == 'price' %}checked{% endif %}>
+                <label class="check-label" for="radioGrowPrice">За зростанням ціни</label>
+            </div>
+            <button type="submit">Застосувати</button>
+        </form>
     </div>
 {% endblock content %}
