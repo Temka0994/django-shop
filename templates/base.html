@@ -31,6 +31,21 @@
         <!-- content section -->
     {% endblock content %}
 
+    {% block pagination %}
+        {% if is_paginated %}
+            <div class="pagination-wrapper">
+                <span class="pagination-container">
+                    {% if page_obj.has_previous %}
+                        <a class="page-links" href="{{ request.path }}?page={{ page_obj.previous_page_number }}">Попередня сторінка</a>
+                    {% endif %}
+                    {% if page_obj.has_next %}
+                        <a class="page-links" href="{{ request.path }}?page={{ page_obj.next_page_number }}">Наступна сторінка</a>
+                    {% endif %}
+                </span>
+            </div>
+        {% endif %}
+    {% endblock pagination %}
+
     {% block footer %}
         <div class='footer'>
             <p>
