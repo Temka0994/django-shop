@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from .models import Product
 from django.views import generic
 
@@ -7,6 +6,7 @@ class ProductListView(generic.ListView):
     model = Product
     context_object_name = 'product_list'
     template_name = 'catalog/catalog.html'
+    paginate_by = 9
 
 
 class ProductDetailView(generic.DetailView):

@@ -74,6 +74,7 @@ li {
 .footer {
     width: 99%;
     display: flex;
+    margin: 30px 0 0 0;
     background-color: #4CAF50;
     padding: 5px 10px;
     justify-content: center;
@@ -254,3 +255,42 @@ li {
     text-align: center;
     margin: 20px 0 20px 0;
 }
+
+.page-links {
+    font-family: "Gill Sans", sans-serif;
+    font-size: larger;
+    text-align: center;
+    background-color: white;
+    color: black;
+    padding: 10px;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 200px;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    text-decoration: none;
+    transition: background-color .5s linear, color .5s linear;
+}
+
+.page-links:hover {
+    color: white;
+    background-color: #4CAF50;
+}
+
+.pagination-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.pagination-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 500px;
+}
+
