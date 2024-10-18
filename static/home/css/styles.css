@@ -340,14 +340,10 @@ li {
 .check-label {
     display: inline-flex;
     align-items: center;
-    background-color: #f0f7f1;
-    padding: 10px;
-    border-radius: 5px;
     margin: 3px;
     cursor: pointer;
     color: black;
     font-size: 16px;
-    width: 150px;
 }
 
 .check-input:focus {
@@ -355,7 +351,7 @@ li {
 }
 
 select {
-    width: 150px;
+    width: 170px;
     padding: 10px;
     border-radius: 5px;
     border: 2px solid #4CAF50;
@@ -363,7 +359,7 @@ select {
     font-size: 16px;
     color: #333;
     transition: all 0.3s ease;
-    margin: 3px 0 3px 40px;
+    margin: 3px 0 3px 0;
 }
 
 select:focus {
@@ -383,9 +379,10 @@ button[type="submit"] {
     padding: 10px;
     border: none;
     border-radius: 5px;
+    width: 170px;
     cursor: pointer;
     font-size: 16px;
-    margin: 10px 0 10px 60px;
+    margin: 15px 0 10px 0;
 }
 
 .catalog-container {
@@ -404,4 +401,8 @@ button[type="submit"] {
 .no-products {
     font-family: "Comic Sans MS", cursive;
     font-size: larger;
+}
+
+.form-catalog {
+    margin: 30px;
 }
