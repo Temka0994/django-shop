@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="main">
+        <form method="post" action="{% url "login" %}">
+            {% csrf_token %}
+            <h2 class="welcome-title">Авторизація</h2>
+            <div class="center-box">
+                <div>
+                    <label for="username" class="form-label">Логін</label>
+                    <input id="username" name="username" type="text" class="input-username"/>
+                </div>
+                <div>
+                    <label for="password" class="form-label">Пароль</label>
+                    <input id="password" name="password" type="password" class="input-password"/>
+                </div>
+                <button type="submit">submit</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
