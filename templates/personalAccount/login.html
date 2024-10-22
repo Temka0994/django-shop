@@ -4,8 +4,8 @@
     <div class="main">
         <form method="post" action="{% url "login" %}">
             {% csrf_token %}
-            <h2 class="welcome-title">Авторизація</h2>
-            <div class="center-box">
+            <div class="welcome-title">
+                <h2>Авторизація</h2>
                 <div>
                     <label for="username" class="form-label">Логін</label>
                     <input id="username" name="username" type="text" class="input-username"/>
@@ -14,7 +14,15 @@
                     <label for="password" class="form-label">Пароль</label>
                     <input id="password" name="password" type="password" class="input-password"/>
                 </div>
-                <button type="submit">submit</button>
+                <button type="submit">Підтвердити</button>
+                <div>
+                    <a href="{% url "registration" %}">Досі не зареєстровані? Зробіть це тут</a>
+                </div>
+                <div>
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
             </div>
         </form>
     </div>

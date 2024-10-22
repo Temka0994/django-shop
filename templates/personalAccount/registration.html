@@ -4,8 +4,8 @@
     <div class="main">
         <form method="post" action="{% url "registration" %}">
             {% csrf_token %}
-            <h2 class="welcome-title">Реєстрація</h2>
-            <div class="center-box">
+            <div class="welcome-title">
+                <h2>Реєстрація</h2>
                 <div>
                     <label for="username" class="form-label">Логін</label>
                     <input id="username" name="username" type="text" class="input-username"/>
@@ -19,7 +19,12 @@
                     <input id="password_confirmation" name="password_confirmation" type="password"
                            class="input-password"/>
                 </div>
-                <button type="submit">submit</button>
+                <button type="submit">Підтвердити</button>
+                <div>
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
             </div>
         </form>
     </div>

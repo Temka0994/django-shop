@@ -15,7 +15,7 @@ urlpatterns = [
     path('catalog/', ProductListView.as_view(), name="catalog"),
     path('product/<slug:product_slug>/', ProductDetailView.as_view(), name="product_details"),
     path('login/', personalAccount.views.login_view, name="login"),
+    path('logout/', personalAccount.views.logout_view, name='logout'),
     path('registration/', personalAccount.views.registration_view, name="registration"),
-    path('login/', personalAccount.views.logout_view, name="logout"),
     path('cabinet/', personalAccount.views.cabinet, name="cabinet"),
 ] + static(settings.MEDIA_URL)

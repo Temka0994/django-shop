@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Особистий кабінет</h1>
+    {% if user.is_authenticated %}
+        <h1>Вітаємо, {{ user.get_username }}</h1>
+        <a href="{% url 'logout' %}"> Вийти з аккаунту</a>
+    {% endif %}
 {% endblock %}

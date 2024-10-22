@@ -124,3 +124,5 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = 'https://ucarecdn.com/'
+
+LOGIN_URL = 'login'
