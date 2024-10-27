@@ -422,3 +422,23 @@ button[type="submit"] {
     font-size: 14px;
     font-weight: bold;
 }
+
+.cart-image{
+    width: 100px;
+
+}
+
+.order-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.order-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.order-item img {
+    margin-right: 15px;
+}

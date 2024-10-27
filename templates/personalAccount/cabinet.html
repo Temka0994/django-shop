@@ -2,14 +2,24 @@
 
 {% block content %}
     {% if user.is_authenticated %}
-        <h1>Вітаємо, {{ user.get_username }}</h1>
+        <h1 class="welcome-title">Вітаємо, {{ user.get_username }}</h1>
+        <div class="main">
+        <h2>Ваш кошик:</h2>
         {% if order_list %}
-            {% for product in order_list %}
-                <p>{{ product.product.product_name }} - {{ product.count }} шт.</p>
-            {% endfor %}
-        {% else %}
-            <p>У вас немає замовлень.</p>
+            <div class="order-list">
+                {% for product in order_list %}
+                    <div class="order-item">
+                        <img src="{{ MEDIA_URL }}{{ product.product.product_photo }}/" class="cart-image"
+                             alt="{{ product.product.product_name }}">
+                        <div class="order-details">
+                            <a class="catalog-text">{{ product.product.product_name }}</a>
+                            <p>Кількість: {{ product.count }} шт.</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
         {% endif %}
-        <a href="{% url 'logout' %}">Вийти з аккаунту</a>
+        <a href="{% url 'logout' %}" class="button">Вийти з аккаунту</a>
     {% endif %}
+</div>
 {% endblock %}
