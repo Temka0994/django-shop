@@ -3,6 +3,8 @@ from django.contrib.auth import authenticate, login as user_login, logout
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from .models import OrderList
+from django.views import generic
 
 
 def login_view(request):
@@ -37,9 +39,16 @@ def registration_view(request):
 
 @login_required
 def cabinet(request):
-    return render(request, 'personalAccount/cabinet.html')
+    order_list = OrderList.objects.filter(user=request.user)
+    return render(request, 'personalAccount/cabinet.html', {'order_list': order_list})
 
 
+@login_required
 def logout_view(request):
     logout(request)
     return redirect('home')
+
+
+class OrderListView(generic.ListView):
+    model = OrderList
+    context_object_name = 'order_list'

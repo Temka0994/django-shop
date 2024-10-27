@@ -3,6 +3,13 @@
 {% block content %}
     {% if user.is_authenticated %}
         <h1>Вітаємо, {{ user.get_username }}</h1>
-        <a href="{% url 'logout' %}"> Вийти з аккаунту</a>
+        {% if order_list %}
+            {% for product in order_list %}
+                <p>{{ product.product.product_name }} - {{ product.count }} шт.</p>
+            {% endfor %}
+        {% else %}
+            <p>У вас немає замовлень.</p>
+        {% endif %}
+        <a href="{% url 'logout' %}">Вийти з аккаунту</a>
     {% endif %}
 {% endblock %}
