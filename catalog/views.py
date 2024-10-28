@@ -1,5 +1,8 @@
 from .models import Product, ProductType, Manufacturer
 from django.views import generic
+from personalAccount.views import OrderList
+from django.shortcuts import redirect
+from django.contrib.auth.decorators import login_required
 
 
 class ProductListView(generic.ListView):
@@ -44,3 +47,17 @@ class ProductDetailView(generic.DetailView):
     slug_url_kwarg = 'product_slug'
     context_object_name = 'product'
     template_name = 'catalog/product_details.html'
+
+
+@login_required
+def add_to_cart(request):
+    user = request.user
+    product_id = request.POST.get('product_id')
+    product = Product.objects.get(product_id=product_id)
+    card, created = OrderList.objects.get_or_create(user=user, product=product)
+    if created:
+        card.count = 1
+    else:
+        card.count += 1
+    card.save()
+    return redirect(request.META.get('HTTP_REFERER', 'catalog'))

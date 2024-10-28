@@ -6,7 +6,6 @@ from django.contrib.auth.decorators import login_required
 from .models import OrderList
 from django.views import generic
 
-
 def login_view(request):
     if request.method == 'POST':
         username = request.POST['username']

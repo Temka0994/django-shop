@@ -17,8 +17,12 @@
             <hr>
             <p>Усього {{ product.price }} ₴!</p>
         </div>
-        <div class="text-button-container">
-            <a href="" class="button cart-button">Додати в кошик</a>
-        </div>
+        <form action="{% url 'add_to_cart' %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="product_id" value="{{ product.product_id }}">
+            <div class="button-container">
+                <button class="button add-to-cart-button">Додати в кошик</button>
+            </div>
+        </form>
     </div>
 {% endblock content %}
