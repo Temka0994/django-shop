@@ -14,8 +14,16 @@
                         <div class="order-details">
                             <a class="catalog-text">{{ product.product.product_name }}</a>
                             <p>Кількість: {{ product.count }} шт.</p>
-                            <button class="button">Додати</button>
-                            <button class="button">Прибрати</button>
+                                <form action="{% url 'add_to_cart' %}" method="POST" style="display:inline;">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="product_id" value="{{ product.product_id }}">
+                                    <button type="submit" class="button">Додати</button>
+                                </form>
+                                <form action="{% url 'remove_from_cart' %}" method="POST" style="display:inline;">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="product_id" value="{{ product.product_id }}">
+                                    <button type="submit" class="button">Прибрати</button>
+                                </form>
                         </div>
                     </div>
                 {% endfor %}

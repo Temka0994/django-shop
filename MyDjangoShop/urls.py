@@ -19,4 +19,5 @@ urlpatterns = [
                   path('registration/', personalAccount.views.registration_view, name="registration"),
                   path('cabinet/', personalAccount.views.cabinet, name="cabinet"),
                   path('add_to_cart/', add_to_cart, name='add_to_cart'),
+                  path('remove_from_cart/', personalAccount.views.remove_from_cart, name='remove_from_cart'),
               ] + static(settings.MEDIA_URL)

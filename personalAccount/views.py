@@ -3,8 +3,9 @@ from django.contrib.auth import authenticate, login as user_login, logout
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import OrderList
+from .models import OrderList, Product
 from django.views import generic
+
 
 def login_view(request):
     if request.method == 'POST':
@@ -46,6 +47,24 @@ def cabinet(request):
 def logout_view(request):
     logout(request)
     return redirect('home')
+
+
+@login_required
+def remove_from_cart(request):
+    user = request.user
+    product_id = request.POST.get('product_id')
+    product = Product.objects.get(product_id=product_id)
+    try:
+        order_item = OrderList.objects.get(user=user, product=product)
+        if order_item.count > 1:
+            order_item.count -= 1
+            order_item.save()
+        else:
+            order_item.delete()
+    except OrderList.DoesNotExist:
+        pass
+
+    return redirect(request.META.get('HTTP_REFERER', 'cabinet'))
 
 
 class OrderListView(generic.ListView):
